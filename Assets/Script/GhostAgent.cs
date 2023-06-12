@@ -14,6 +14,8 @@ public class GhostAgent : MonoBehaviour
     public float randomMovementRadius = 10f;
     public float rotationSpeed = 5f; // Kecepatan rotasi halus
 
+    public AudioSource audioSource; // Komponen AudioSource untuk memutar audio
+
     private Animator animator;
     private NavMeshAgent navMeshAgent;
     private Transform player;
@@ -134,6 +136,22 @@ public class GhostAgent : MonoBehaviour
         {
             TransitionRotation();
         }
+
+        // Putar audio jika Ghost Agent sedang mengikuti player
+        if (isFollowingPlayer)
+        {
+            if (!audioSource.isPlaying)
+            {
+                audioSource.Play();
+            }
+        }
+        else
+        {
+            if (audioSource.isPlaying)
+            {
+                audioSource.Stop();
+            }
+        }
     }
 
     private Vector3 GetRandomTargetPosition()
@@ -161,6 +179,7 @@ public class GhostAgent : MonoBehaviour
         }
     }
 }
+
 
 
 

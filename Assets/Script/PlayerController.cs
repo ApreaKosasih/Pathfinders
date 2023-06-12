@@ -332,10 +332,7 @@ public class PlayerController : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Escape))
-        {
-            QuitGame();
-        }
+        
         groundedPlayer = controller.isGrounded;
         if (groundedPlayer && playerVelocity.y < 0)
         {
@@ -482,8 +479,4 @@ public class PlayerController : MonoBehaviour
         audioSource.pitch = Time.timeScale * soundEffectSpeedScale * inputMagnitude;
     }
 
-    void QuitGame()
-    {
-        Application.Quit();
-    }
 }
